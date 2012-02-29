@@ -1,0 +1,24 @@
+[core]
+	excludesfile = ~/config/git/.gitignore
+[user]
+	email = martin.carel@gmail.com
+	name = Martin Carel
+[color]
+	status = auto
+	branch = auto
+	ui = always
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[alias]
+	ribbon = tag --force _ribbon origin/master
+	catchup = log --patch --reverse --topo-order _ribbon..origin/master
+	cp = cherry-pick
+	co = checkout
+	ci = commit
+	i  = init
+	st = status
+	rb = rebase
+[diff]
+	external = ~/scripts/git_diff_wrapper.sh
