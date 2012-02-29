@@ -3,22 +3,9 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 	. `brew --prefix`/etc/bash_completion
 fi
 
-function ruby_gemset_ps1 {
-	# if using rvm and inside a git dir
-	current_rvm_gemset=`~/.rvm/bin/rvm-prompt i v p g` 
-	if [ -n "$current_rvm_gemset" ] && [ -n "`__git_ps1`" ]; then
-		echo "[$(__git_ps1 $current_rvm_gemset)] " 
-	fi
-}
-
-
-# git prompt
+# prompt (with both git and rvm info)
 GIT_PS1_SHOWDIRTYSTATE=1
 export PS1='\[\e[32;40m\]$(~/.rvm/bin/rvm-prompt i v g)\[\e[0m\] \u@\h \W$(__git_ps1 " (%s)")\$ ';
-#export PS1="\[\e[32;40m\]\$(~/.rvm/bin/rvm-prompt)\[\e[0m\] \u@\h \W`__git_ps1 " (%s)") ` ";
-#export PS1='\u@\h $(__git_ps1 "`ruby_gemset`")\W$(__git_ps1 " (%s)") \$ ';
-#export PS1='\u@\h $(ruby_gemset_ps1)\W$(__git_ps1 " (%s)") \$ ';
-#PS1="\[\e[32;40m\]\$(~/.rvm/bin/rvm-prompt)\[\e[0m\] $PS1"   # from Hugo
 
 export TERM=xterm-256color
 
