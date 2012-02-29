@@ -1,9 +1,11 @@
-def get_invalid(klass)
-	klass.all.reject{|i| i.valid?}
+class Debug
+	def self.invalid_rows_for(klass)
+		klass.all.reject{|i| i.valid?}
+	end
 end
 
 class Object
-	# Return only the methods not present on basic objects
+	# find only the methods not present on an Object instance
 	def interesting_methods
 		(self.methods - Object.new.methods).sort
 	end
@@ -19,9 +21,5 @@ begin
 rescue LoadError => err
 	warn "Couldn't load Wirble: #{err}"
 end
-
-# require 'hirb'
-# Hirb::View.enable
-# Hirb::View.formatter_config
 
 puts "irbrc file loaded"
